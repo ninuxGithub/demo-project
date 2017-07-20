@@ -10,6 +10,10 @@ import net.sf.cglib.proxy.MethodProxy;
 public class CglibProxy implements MethodInterceptor {
 	private Object target;
 
+	/**
+	 * @param target
+	 * @return
+	 */
 	public Object getInstance(Object target) {
 		this.target = target;  
         Enhancer enhancer = new Enhancer();  
