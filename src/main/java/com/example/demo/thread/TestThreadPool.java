@@ -53,6 +53,7 @@ public class TestThreadPool {
 		private int index;
 
 		public TaskThreadPool() {
+		
 		}
 
 		public TaskThreadPool(int index) {
