@@ -8,12 +8,16 @@
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+
 <!-- 页面显示部分 -->
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            <h2>产品列表</h2>
+            <h2>订单列表</h2>
         </div>
+        
+        <span th:text="${msg}" style="color:red;font-size:18px;"></span>
+        
         <div class="panel-body">
             <table class="table table-hover">
                 <thead>
@@ -29,10 +33,13 @@
                         <td th:text="${order.produceName}"></td>
                         <td th:text="${order.stockAmount}"></td>
                         <td th:text="${order.productDate}"></td>
-                        <td th:text="${order.qualityGuaranteePeriod}"></td>
+                        <td th:text="${#dates.format(order.qualityGuaranteePeriod, 'yyyy-MM-dd')}"></td>
                     </tr>
                 </tbody>
             </table>
+            <div>
+            	<a th:href="@{/addOrder}" class="panel-default">新增订单</a>
+            </div>
         </div>
     </div>
 </div>

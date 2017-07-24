@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>产品列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<!-- 页面显示部分 -->
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h2>新增订单</h2>
+        </div>
+        <div class="panel-body">
+        	<form action="#" th:action="@{/addOrderAction}" th:object="${order}"  method="POST">
+	        	<table class="table table-hover">
+	        		<tr>
+	        			<td><label>产品名称</label></td>
+	        			<td>
+	        				<input type="text" name="produceName" th:value="*{produceName}"/>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td><label>生产日期</label></td>
+<!-- 	        			<td><input type="text" name="productDate" th:value="${#dates.format([[*{productDate}]], 'yyyy-MM-dd')}"/></td> -->
+	        			<td><input type="text" name="productDate" th:value="*{productDate}"/></td>
+	        		</tr>
+	        		<tr>
+	        			<td><label>保质期</label></td>
+	        			<td>
+	        				<input type="text" name="qualityGuaranteePeriod" th:value="*{qualityGuaranteePeriod}"/>
+	        				<span th:if="${#fields.hasErrors('qualityGuaranteePeriod')}" th:errors="*{qualityGuaranteePeriod}"></span>
+	        			</td>
+	        		</tr>
+	        		<tr>
+	        			<td><label>库存</label></td>
+	        			<td><input type="text" name="stockAmount" th:value="*{stockAmount}"/></td>
+	        		</tr>
+	        		<tr>
+	        			<td colspan="2">
+		        			<input type="submit" value="Create"/>  
+	        			</td>
+	        		</tr>
+	        	</table>
+        	</form>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
