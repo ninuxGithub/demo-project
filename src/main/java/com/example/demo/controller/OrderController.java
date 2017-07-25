@@ -2,7 +2,10 @@ package com.example.demo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.bean.Order;
+import com.example.demo.bean.SelectItem;
 import com.example.demo.repository.OrderRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -77,6 +81,19 @@ public class OrderController {
 	@RequestMapping("/message")
 	public String message(Model model) {
 		model.addAttribute("message", "js message test");
+		Map<Integer,String> map = new LinkedHashMap<>();
+		List<SelectItem<Integer, String>> list = new LinkedList<>();
+		SelectItem<Integer,String> item =null;
+		String[] weeks = new String[]{"","星期一","星期二","星期三","星期四","星期五","星期六","星期日",};
+		for(int i=1; i<=7; i++){
+			item = new SelectItem<Integer, String>(i, weeks[i]);
+			map.put(i, weeks[i]);
+			list.add(item);
+		}
+		
+		model.addAttribute("map", map);
+		model.addAttribute("list", list);
+		
 		return "message";
 	}
 	

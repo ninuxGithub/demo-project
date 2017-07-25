@@ -8,6 +8,20 @@
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+<div class="form-control">
+	<select  class="zz-set-input-size" id="channel" style="">
+	    <option value="">请选择</option>
+	    <option th:each="channel, channelS:${map}" th:value="${channel.key}">
+	    	<div th:text="${channel.value}"/>
+	    </option>
+	</select>
+	<select  class="zz-set-input-size" id="channel2" style="">
+	    <option value="">请选择</option>
+	    <option th:each="channel, channelS:${map}" th:value="${channel.key}">
+	    	<div th:text="${channel.value}"/>
+	    </option>
+	</select>
+</div>
 
 <input  id="msg"  th:value="${message}" />
 
