@@ -35,7 +35,7 @@
                         <td th:text="${index.count}"></td>
                         <td th:text="${order.produceName}"></td>
                         <td th:text="${order.stockAmount}"></td>
-                        <td th:text="${order.productDate}"></td>
+                        <td th:text="${#dates.format(order.productDate, 'yyyy-MM-dd')}"></td>
                         <td th:text="${#dates.format(order.qualityGuaranteePeriod, 'yyyy-MM-dd')}"></td>
                         <td>
                         	<a class="btn btn-info" th:href="@{'/delete?orderId='+${order.orderId}}" target="_blank">Delete</a>
