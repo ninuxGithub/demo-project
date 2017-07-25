@@ -2,5 +2,6 @@
 
 
 测试各种技术， jdk 动态代理 cglib 代理
-spring thymeleaf 
+spring thymeleaf 增删改查
+
 
