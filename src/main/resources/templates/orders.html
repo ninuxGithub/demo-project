@@ -22,23 +22,30 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
+                    <th>序号</th>
                     <th>名称</th>
                     <th>库存</th>
                     <th>生产日期</th>
                     <th>保质期</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="order:${orders}">
+                    <tr th:each="order,index:${orders}">
+                        <td th:text="${index.count}"></td>
                         <td th:text="${order.produceName}"></td>
                         <td th:text="${order.stockAmount}"></td>
                         <td th:text="${order.productDate}"></td>
                         <td th:text="${#dates.format(order.qualityGuaranteePeriod, 'yyyy-MM-dd')}"></td>
+                        <td>
+                        	<a class="btn btn-info" th:href="@{'/delete?orderId='+${order.orderId}}" target="_blank">Delete</a>
+                        	<a class="btn btn-info" th:href="@{'/modify?orderId='+${order.orderId}}" target="_blank">Modify</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
             <div>
-            	<a th:href="@{/addOrder}" class="panel-default">新增订单</a>
+            	<a th:href="@{/inputOrder}" class="panel-default">新增订单</a>
             </div>
         </div>
     </div>

@@ -13,14 +13,17 @@
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
-            <h2>新增订单</h2>
+            <h2 th:if="${order.orderId==null}">新增订单</h2>
+            <h2 th:if="${order.orderId!=null}">修改订单</h2>
         </div>
         <div class="panel-body">
-        	<form action="#" th:action="@{/addOrderAction}" th:object="${order}"  method="POST">
+        	<form action="#" th:action="@{/inputOrderAction}" th:object="${order}"  method="POST">
 	        	<table class="table table-hover">
 	        		<tr>
 	        			<td><label>产品名称</label></td>
 	        			<td>
+	        				<!-- 在修改的时候需要携带Id到后台 -->
+	        				<input type="hidden" name="orderId" th:if="*{orderId!=null}" th:value="*{orderId}"/>
 	        				<input type="text" name="produceName" th:value="*{produceName}"/>
 	        			</td>
 	        		</tr>
@@ -42,7 +45,8 @@
 	        		</tr>
 	        		<tr>
 	        			<td colspan="2">
-		        			<input type="submit" value="Create"/>  
+		        			<input class="btn btn-info"  type="submit" th:if="*{orderId==null}" value="Create"/>  
+		        			<input class="btn btn-info"  type="submit" th:if="*{orderId!=null}" value="Modify"/>  
 	        			</td>
 	        		</tr>
 	        	</table>
