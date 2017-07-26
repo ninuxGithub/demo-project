@@ -62,11 +62,11 @@ public class FreeMarkerController {
 			fis.close();
 			String headPortrait = b64Encoder.encodeAsString(imgData);
 			order.setHeadPortrait(headPortrait);
-			log.info("图片的字节码：{}", headPortrait);
+			//log.info("图片的字节码：{}", headPortrait);
 		}
-		Map<String, Object> root = new HashMap<String, Object>();
-		root.put("orders", list);
-		template.process(root, new OutputStreamWriter(response.getOutputStream()));
+		Map<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("orders", list);
+		template.process(dataMap, new OutputStreamWriter(response.getOutputStream()));
 	}
 
 }

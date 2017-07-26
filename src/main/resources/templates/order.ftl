@@ -421,45 +421,49 @@
                     </w:rPr>
                   </w:pPr>
                  <w:r>
-                    <w:rPr>
-                      <w:rFonts w:hint="eastAsia"/>
-                      <w:vertAlign w:val="baseline"/>
-                      <w:lang w:val="en-US" w:eastAsia="zh-CN"/>
-                    </w:rPr>
-                    <w:drawing>
-                      <wp:inline distT="0" distB="0" distL="114300" distR="114300">
-                        <wp:extent cx="765175" cy="765175"/>
-                        <wp:effectExtent l="0" t="0" r="15875" b="15875"/>
-                        <wp:docPr id="${order.orderId}" name="图片 1" descr="${order.imageName}"/>
-                        <wp:cNvGraphicFramePr/>
-                        <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
-                          <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
-                            <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
-                              <pic:nvPicPr>
-                                <pic:cNvPr id="${order.orderId}" name="图片 1" descr="${order.imageName}"/>
-                                <pic:cNvPicPr/>
-                              </pic:nvPicPr>
-                              <pic:blipFill>
-                                <a:blip r:embed="rId4"/>
-                                <a:stretch>
-                                  <a:fillRect/>
-                                </a:stretch>
-                              </pic:blipFill>
-                              <pic:spPr>
-                                <a:xfrm>
-                                  <a:off x="0" y="0"/>
-                                  <a:ext cx="765175" cy="765175"/>
-                                </a:xfrm>
-                                <a:prstGeom prst="rect">
-                                  <a:avLst/>
-                                </a:prstGeom>
-                              </pic:spPr>
-                            </pic:pic>
-                          </a:graphicData>
-                        </a:graphic>
-                      </wp:inline>
-                    </w:drawing>
-                  </w:r>
+                  <w:rPr>
+                    <w:rFonts w:hint="eastAsia" w:eastAsiaTheme="minorEastAsia" />
+                    <w:vertAlign w:val="baseline" />
+                    <w:lang w:val="en-US" w:eastAsia="zh-CN" />
+                  </w:rPr>
+                  <w:drawing>
+                    <wp:inline distT="0" distB="0" distL="114300" distR="114300">
+                      <wp:extent cx="765175" cy="765175" />
+                      <wp:effectExtent l="0" t="0" r="15875" b="15875" />
+                      <wp:docPr id="${order.orderId}.jpeg" name="cloud" descr="cloud" />
+                      <wp:cNvGraphicFramePr>
+                        <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1" />
+                      </wp:cNvGraphicFramePr>
+                      <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                        <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                          <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                            <pic:nvPicPr>
+                              <pic:cNvPr id="${order.orderId}.jpeg" name="cloud" descr="cloud" />
+                              <pic:cNvPicPr>
+                                <a:picLocks noChangeAspect="1" />
+                              </pic:cNvPicPr>
+                            </pic:nvPicPr>
+                            <pic:blipFill>
+                              <a:blip r:embed="rId4" />
+                              <a:stretch>
+                                <a:fillRect />
+                              </a:stretch>
+                            </pic:blipFill>
+                            <pic:spPr>
+                              <a:xfrm>
+                                <a:off x="0" y="0" />
+                                <a:ext cx="765175" cy="765175" />
+                              </a:xfrm>
+                              <a:prstGeom prst="rect">
+                                <a:avLst />
+                              </a:prstGeom>
+                            </pic:spPr>
+                          </pic:pic>
+                        </a:graphicData>
+                      </a:graphic>
+                    </wp:inline>
+                  </w:drawing>
+                </w:r>
                 </w:p>
               </w:tc>
             </w:tr>
@@ -488,6 +492,8 @@
       </Relationships>
     </pkg:xmlData>
   </pkg:part>
+  
+  
   <pkg:part pkg:name="/customXml/item1.xml" pkg:contentType="application/xml">
     <pkg:xmlData>
       <s:customData xmlns:s="http://www.wps.cn/officeDocument/2013/wpsCustomData" xmlns="http://www.wps.cn/officeDocument/2013/wpsCustomData">
@@ -648,7 +654,7 @@
     </pkg:xmlData>
   </pkg:part>
   <#list orders as order>
-   <pkg:part pkg:name="/word/media/image{order.orderId}.jpeg" pkg:contentType="image/jpeg">
+   <pkg:part pkg:name="/word/media/image${order.orderId}.jpeg" pkg:contentType="image/jpeg">
     <pkg:binaryData>${order.headPortrait}</pkg:binaryData>
   </pkg:part>
   </#list>
