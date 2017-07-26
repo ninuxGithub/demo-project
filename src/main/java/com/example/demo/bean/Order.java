@@ -64,5 +64,11 @@ public class Order implements Serializable {
 	 */
 	@NotNull
 	private Integer stockAmount;
+	
+	
+	private String headPortrait;
+	
+	
+	private String imageName;
 
 }
