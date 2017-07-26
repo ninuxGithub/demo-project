@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.bean.Order;
@@ -39,6 +40,13 @@ public class OrderController {
 	
 	private String contextPath;
 
+	@ResponseBody
+	@RequestMapping("/orderList")
+	public List<Order> orderList() {
+		List<Order> orderList = orderRepository.findAll();
+		return orderList;
+	}
+	
 	@RequestMapping("/orders")
 	public String loadOrder(Model model , HttpServletRequest request) {
 		List<Order> orderList = orderRepository.findAll();
