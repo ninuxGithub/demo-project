@@ -17,6 +17,7 @@
 
 7.加入@ControllerAdvice 处理全局的异常Exception 和  自定义的异常BusinessException       
 
+7.加入Scheduled 定时任务demo         
 Demo Picture
 ![image](https://github.com/ninuxGithub/demo-project/blob/master/demo.png)
 
