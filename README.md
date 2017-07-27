@@ -15,6 +15,8 @@
 
 6.加入Aspect 统计方法Controller 方法运行消耗的时间         
 
+7.加入@ControllerAdvice 处理全局的异常Exception 和  自定义的异常BusinessException       
+
 Demo Picture
 ![image](https://github.com/ninuxGithub/demo-project/blob/master/demo.png)
 
