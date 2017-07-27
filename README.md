@@ -11,6 +11,8 @@
    
 4.加入Druid 数据源 便于观察数据库的连接情况      
 
+5.加入Resuful API 的查看情况           
+
 Demo Picture
 ![image](https://github.com/ninuxGithub/demo-project/blob/master/demo.png)
 
