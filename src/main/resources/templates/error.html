@@ -18,7 +18,7 @@
 					<label>Exception is:</label>
 				</td>
 				<td>
-					<span th:text="${exception}"></span>
+					<span  class="bg-danger" th:text="${exception}"></span>
 				</td>
 			</tr>
 			<tr>
@@ -26,7 +26,7 @@
 					<label>Exception Mssage is:</label>
 				</td>
 				<td>
-					<span th:text="${exception.message}"></span>
+					<span  class="bg-danger" th:text="${exception.message}"></span>
 				</td>
 			</tr>
 			<tr>
@@ -34,7 +34,7 @@
 					<label>Visit URL:</label>
 				</td>
 				<td>
-					<span th:text="${url}"></span>
+					<span  class="bg-danger" th:text="${url}"></span>
 				</td>
 			</tr>
 		</table>
@@ -43,6 +43,7 @@
 	<button class="btn btn-default" type="submit">Button</button>
 	<input class="btn btn-default" type="button" value="Input"/>
 	<input class="btn btn-default" type="submit" value="Submit"/>
+	<br/>
 	<br/>
 	
 	<!-- Standard button -->
@@ -65,6 +66,14 @@
 
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link">（链接）Link</button>
+
+<br/>
+<br/>
+<p class="bg-primary">...</p>
+<p class="bg-success">...</p>
+<p class="bg-info">...</p>
+<p class="bg-warning">...</p>
+<p class="bg-danger">...</p>
 </div>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
