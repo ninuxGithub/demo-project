@@ -8,6 +8,7 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.JedisPoolConfig;
@@ -37,7 +38,10 @@ public class RedisConfig {
       
     @Bean  
     public RedisTemplate<?, ?> getRedisTemplate(){  
-        RedisTemplate<?,?> template = new StringRedisTemplate(getConnectionFactory());  
+        RedisTemplate<?,?> template = new StringRedisTemplate(getConnectionFactory());
+        //加入Key Value 序列化的对象
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new RedisObjectSerializer());
         JedisConnectionFactory connectionFactory = getConnectionFactory();
         if(null != connectionFactory){
 	        RedisConnection connection = getConnectionFactory().getConnection();
