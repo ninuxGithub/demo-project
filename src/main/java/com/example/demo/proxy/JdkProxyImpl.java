@@ -1,6 +1,6 @@
 package com.example.demo.proxy;
 
-import com.example.demo.aop.TimeCounter;
+import com.example.demo.annotation.TimeCounter;
 
 public class JdkProxyImpl implements JdkProxy{
 

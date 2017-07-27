@@ -13,6 +13,8 @@
 
 5.加入Resuful API 的查看情况           
 
+6.加入Aspect 统计方法Controller 方法运行消耗的时间         
+
 Demo Picture
 ![image](https://github.com/ninuxGithub/demo-project/blob/master/demo.png)
 

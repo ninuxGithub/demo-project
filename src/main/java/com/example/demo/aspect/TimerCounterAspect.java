@@ -1,4 +1,4 @@
-package com.example.demo.aop;
+package com.example.demo.aspect;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -23,7 +23,7 @@ public class TimerCounterAspect {
 	
 	ThreadLocal<Map<ClassLoader, Long>> timeLocal =new ThreadLocal<>();
 	
-	@Pointcut(value="execution(* com.example.demo.proxy.AopTestController.*(..)) and @annotation(com.example.demo.aop.TimeCounter) ")
+	@Pointcut(value="execution(* com.example.demo.controller.AopTestController.*(..)) and @annotation(com.example.demo.aop.TimeCounter) ")
 	public void targetMethodCutPoint(){}
 	
 	@Before(value="targetMethodCutPoint()")
