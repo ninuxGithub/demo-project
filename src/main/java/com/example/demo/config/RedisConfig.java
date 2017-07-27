@@ -38,20 +38,26 @@ public class RedisConfig {
       
     @Bean  
     public RedisTemplate<?, ?> getRedisTemplate(){  
-        RedisTemplate<?,?> template = new StringRedisTemplate(getConnectionFactory());
-        //加入Key Value 序列化的对象
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new RedisObjectSerializer());
-        JedisConnectionFactory connectionFactory = getConnectionFactory();
-        if(null != connectionFactory){
-	        RedisConnection connection = getConnectionFactory().getConnection();
-	        if(null != connection){
-	        	log.info("==>JedisConnectionFactory bean init and Connect Redis Success...");  
-	        }
-        }else{
-        	
-        	log.info("==>connectionFactory is null ...");  
-        }
-        return template;  
+    	RedisTemplate<?, ?> template;
+		try {
+			JedisConnectionFactory connectionFactory = getConnectionFactory();
+			if(null != connectionFactory){
+				RedisConnection connection = getConnectionFactory().getConnection();
+				if(null != connection){
+					log.info("==>JedisConnectionFactory bean init and Connect Redis Success...");  
+				}
+			}else{
+				
+				log.info("==>connectionFactory is null ...");  
+			}
+			template = new StringRedisTemplate(getConnectionFactory());
+			//加入Key Value 序列化的对象
+			template.setKeySerializer(new StringRedisSerializer());
+			template.setValueSerializer(new RedisObjectSerializer());
+			return template;  
+		} catch (Exception e) {
+			log.info("创建RedisTemplate失败，抛出异常{}", e.getMessage());
+		}
+		return null;
     }  
 } 
