@@ -47,6 +47,31 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		//http://localhost:8080/?name=minaHttp
+		
+		
+		/**
+		 * acceptor.getFilterChain().addLast("codec",
+				new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"), "\r\n", "\r\n")));
+		 */
+		
+		
+//		int counter = 1;
+//
+//		// 第一次请求，创建session中的counter
+//		if(session.getAttribute("counter") == null) {
+//			session.setAttribute("counter", 1);
+//		} else {
+//			// 获取session中的counter，加1后再存入session
+//			counter = (Integer) session.getAttribute("counter");
+//			counter++;
+//			session.setAttribute("counter", counter);
+//		}
+//
+//		String line = (String) message;
+//		System.out.println("第" + counter + "次请求:" + line);
+//		
+		
+		//======================================================================
 		if (message instanceof HttpRequest) {
 
 			// 请求，解码器将请求转换成HttpRequest对象
@@ -83,11 +108,35 @@ public class ServerHandler extends IoHandlerAdapter {
 
 			session.write(response); // 响应的status line和header部分
 			// 发送数据到客户端
-			WriteFuture future = session.write(responseIoBuffer); // 响应body部分
+			final WriteFuture future = session.write(responseIoBuffer); // 响应body部分
 			
+			
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					for(int i=0; i<5; i++){
+						log.info("{} this is mina thread...", i);
+					}
+					
+					//回调函数
+					future.addListener(new IoFutureListener<WriteFuture>() {
+						
+						// write操作完成后调用的回调函数
+						@Override
+						public void operationComplete(WriteFuture future) {
+							if(future.isWritten()) {
+								log.info("write操作成功 Thread");
+							} else {
+								log.info("write操作失败 Thread ");
+							}
+						}
+					});
+				}
+			}).start();
 			//回调函数
 			future.addListener(new IoFutureListener<WriteFuture>() {
-
+				
 				// write操作完成后调用的回调函数
 				@Override
 				public void operationComplete(WriteFuture future) {
