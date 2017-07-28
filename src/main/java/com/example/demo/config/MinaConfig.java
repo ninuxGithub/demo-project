@@ -55,26 +55,26 @@ public class MinaConfig {
     }
     
     
-   /* @Bean
-    public IoAcceptor ioAcceptor() throws IOException {
-    	IoAcceptor acceptor = new NioSocketAcceptor();
-    	acceptor.getFilterChain().addLast("logger", loggingFilter());
-    	//PrefixedStringCodecFactory
-    	//TextLineCodecFactory
-    	acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new PrefixedStringCodecFactory(Charset.forName("UTF-8"))));
-    	keepAliveFilter = new KeepAliveFilter(new HeartBeatFilter(), IdleStatus.BOTH_IDLE);
-    	keepAliveFilter.setForwardEvent(true);
-    	acceptor.getFilterChain().addLast("heartBeat", keepAliveFilter);
-    	acceptor.setHandler(ioHandler());
-    	acceptor.getSessionConfig().setReadBufferSize(2048);
-    	acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 60);
-    	
-    	acceptor.bind(inetSocketAddress());
-    	if (log.isDebugEnabled()) {
-    		log.debug("server run");
-    	}else if(log.isInfoEnabled()){
-    		log.info("Mina server run...");
-    	}
-    	return acceptor;
-    }*/
+//    @Bean
+//    public IoAcceptor ioAcceptor() throws IOException {
+//    	IoAcceptor acceptor = new NioSocketAcceptor();
+//    	acceptor.getFilterChain().addLast("logger", loggingFilter());
+//    	//PrefixedStringCodecFactory
+//    	//TextLineCodecFactory
+//    	acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new PrefixedStringCodecFactory(Charset.forName("UTF-8"))));
+//    	keepAliveFilter = new KeepAliveFilter(new HeartBeatFilter(), IdleStatus.BOTH_IDLE);
+//    	keepAliveFilter.setForwardEvent(true);
+//    	acceptor.getFilterChain().addLast("heartBeat", keepAliveFilter);
+//    	acceptor.setHandler(ioHandler());
+//    	acceptor.getSessionConfig().setReadBufferSize(2048);
+//    	acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 60);
+//    	
+//    	acceptor.bind(inetSocketAddress());
+//    	if (log.isDebugEnabled()) {
+//    		log.debug("server run");
+//    	}else if(log.isInfoEnabled()){
+//    		log.info("Mina server run...");
+//    	}
+//    	return acceptor;
+//    }
 }
