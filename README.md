@@ -69,6 +69,11 @@ interceptor：
 [demo-project链接](https://github.com/ninuxGithub/demo-project)<br />
 
 
+#### mina教程
+[系列教程:](http://www.cnblogs.com/wucao/tag/MINA/)<br/>
+[深入了解：](//shiyanjun.cn/archives/category/opensource/mina)
+
+
 
 #### 我是效果图片Demo Picture
 	
