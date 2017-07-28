@@ -8,9 +8,10 @@ import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
-import org.apache.mina.filter.codec.textline.TextLineCodecFactory;
+import org.apache.mina.filter.codec.prefixedstring.PrefixedStringCodecFactory;
 import org.apache.mina.filter.keepalive.KeepAliveFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
+import org.apache.mina.http.HttpServerCodec;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,22 +44,34 @@ public class MinaConfig {
 
     @Bean
     public IoAcceptor ioAcceptor() throws IOException {
-        IoAcceptor acceptor = new NioSocketAcceptor();
-        acceptor.getFilterChain().addLast("logger", loggingFilter());
-        acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"))));
-        keepAliveFilter = new KeepAliveFilter(new HeartBeatFilter(), IdleStatus.BOTH_IDLE);
-        keepAliveFilter.setForwardEvent(true);
-        acceptor.getFilterChain().addLast("heartBeat", keepAliveFilter);
-        acceptor.setHandler(ioHandler());
-        acceptor.getSessionConfig().setReadBufferSize(2048);
-        acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 60);
-
-        acceptor.bind(inetSocketAddress());
-        if (log.isDebugEnabled()) {
-            log.debug("server run");
-        }else if(log.isInfoEnabled()){
-        	log.info("Mina server run...");
-        }
-        return acceptor;
+    	IoAcceptor acceptor = new NioSocketAcceptor();
+    	acceptor.getFilterChain().addLast("codec", new HttpServerCodec());
+		acceptor.setHandler(ioHandler());
+		acceptor.bind(new InetSocketAddress(8080));
+		return acceptor;
     }
+    
+    
+   /* @Bean
+    public IoAcceptor ioAcceptor() throws IOException {
+    	IoAcceptor acceptor = new NioSocketAcceptor();
+    	acceptor.getFilterChain().addLast("logger", loggingFilter());
+    	//PrefixedStringCodecFactory
+    	//TextLineCodecFactory
+    	acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new PrefixedStringCodecFactory(Charset.forName("UTF-8"))));
+    	keepAliveFilter = new KeepAliveFilter(new HeartBeatFilter(), IdleStatus.BOTH_IDLE);
+    	keepAliveFilter.setForwardEvent(true);
+    	acceptor.getFilterChain().addLast("heartBeat", keepAliveFilter);
+    	acceptor.setHandler(ioHandler());
+    	acceptor.getSessionConfig().setReadBufferSize(2048);
+    	acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 60);
+    	
+    	acceptor.bind(inetSocketAddress());
+    	if (log.isDebugEnabled()) {
+    		log.debug("server run");
+    	}else if(log.isInfoEnabled()){
+    		log.info("Mina server run...");
+    	}
+    	return acceptor;
+    }*/
 }
