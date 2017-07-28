@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MinaConfig {
 
     private KeepAliveFilter keepAliveFilter;
+    
     private static final Integer PORT = 3003;
 
     @Bean
@@ -55,6 +56,8 @@ public class MinaConfig {
         acceptor.bind(inetSocketAddress());
         if (log.isDebugEnabled()) {
             log.debug("server run");
+        }else if(log.isInfoEnabled()){
+        	log.info("Mina server run...");
         }
         return acceptor;
     }

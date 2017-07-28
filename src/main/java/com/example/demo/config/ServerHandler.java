@@ -41,9 +41,9 @@ public class ServerHandler extends IoHandlerAdapter {
         gson = new Gson();
         try {
             String text = message.toString();
-            log.info("接收消息内容 : " + text);
-            String result = "defalut-Value";//analyzeData(text, session);
-            session.write(result);
+//            log.info("接收消息内容 : " + text);
+//            String result = "defalut-Value";//analyzeData(text, session);
+            session.write(text);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -120,20 +120,28 @@ public class ServerHandler extends IoHandlerAdapter {
     @Override
     public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
         log.info(MessageFormat.format("连接Idle [{0}] from {1} ", status, session.getRemoteAddress()));
-        if (status == IdleStatus.READER_IDLE) {
-            log.info("进入读空闲状态");
-            session.close(true);
-        } else if (status == IdleStatus.BOTH_IDLE) {
-            log.info("BOTH空闲");
-            session.close(true);
-        }
+        try {
+			if (status == IdleStatus.READER_IDLE) {
+			    log.info("进入读空闲状态");
+			    session.close(true);
+			} else if (status == IdleStatus.BOTH_IDLE) {
+			    log.info("BOTH空闲");
+			    session.close(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @Override
     public void sessionClosed(IoSession session) throws Exception {
-        log.info("连接关闭 : " + session.getRemoteAddress().toString());
-        int size = session.getService().getManagedSessions().values().size();
-        log.info("连接关闭时session数量==》" + size);
+        try {
+			log.info("连接关闭 : " + session.getRemoteAddress().toString());
+			int size = session.getService().getManagedSessions().values().size();
+			log.info("连接关闭时session数量==》" + size);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 //        List<String> sessions = (List<String>) session.getAttribute("mac");
 //        if (sessions != null) {
 //            for (String key : sessions) {

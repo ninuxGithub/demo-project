@@ -17,7 +17,7 @@ public class MinaClient {
         NioSocketConnector connector = new NioSocketConnector();
         
         connector.getFilterChain().addLast( "logger", new LoggingFilter() );   
-        connector.getFilterChain().addLast( "codec", new ProtocolCodecFilter( new MyCodeFactory( Charset.forName( "UTF-8" )))); //设置编码过滤器   
+        connector.getFilterChain().addLast( "codec", new ProtocolCodecFilter(new MyCodeFactory( Charset.forName( "UTF-8" )))); //设置编码过滤器   
         connector.setConnectTimeoutMillis(30*1000L);
         connector.setHandler(new MonitorClientHandler());//设置事件处理器   
         ConnectFuture cf = connector.connect( new InetSocketAddress(arr[0], Integer.parseInt(arr[1])));

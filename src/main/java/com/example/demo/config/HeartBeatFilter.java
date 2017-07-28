@@ -34,7 +34,7 @@ public class HeartBeatFilter implements KeepAliveMessageFactory {
 
     @Override
     public Object getRequest(IoSession session) {
-        return null;
+        return session.getCurrentWriteMessage();
     }
 
     @Override
