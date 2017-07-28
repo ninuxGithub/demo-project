@@ -14,8 +14,9 @@ demo-project
 	7.加入@ControllerAdvice 处理全局的异常Exception 和  自定义的异常BusinessException       
 	7.加入Scheduled 定时任务demo        
 	8.加入自定义的Servlet :
-	在使用的时候需要通过注解：@WebServlet(name = "myServlet", urlPatterns="/myServlet/*", description="通过注解实现Servlet")<br>    
-	value 和 urlPatterns 相互冲突好像只可以填写个即可，需要在application.java 类中加入@ServletComponentScan(basePackages="com.example.demo.servlet") <br> 
+	在使用的时候需要通过注解：@WebServlet(name = "myServlet", urlPatterns="/myServlet/*", <br>
+	description="通过注解实现Servlet")  value 和 urlPatterns 相互冲突好像只可以填写个即可，<br>
+	需要在application.java 类中加入@ServletComponentScan(basePackages="com.example.demo.servlet") <br> 
 	扫描到工程中的Servlet
 
 
