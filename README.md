@@ -1,10 +1,10 @@
 demo-project
 ==============
 
-####项目启动：
+#### 项目启动：
 	根据application.properties配置 MySql config对应的配置即可，启动SpringBoot JAP自动创建表     
 
-####内容提示：
+#### 内容提示：
 	1.测试各种技术， jdk 动态代理 cglib 代理        
 	2.spring thymeleaf 增删改查         
 	3.加入Redis 的测试以及完整的demo  
@@ -55,7 +55,7 @@ interceptor：
 	    servlet、filter、listener是配置到web.xml中（web.xml 的加载顺序是：context-param -> listener -> filter -> servlet ），<br>
 	    interceptor不配置到web.xml中，struts的拦截器配置到struts.xml中。spring的拦截器配置到spring.xml中。 <br>
 
-####多行文本框 （2个TAB）
+#### 多行文本框 （2个TAB）
 		Class HelloWorld{
 			public static void main(String[] args){
 				System.out.print("hello world");
@@ -64,12 +64,12 @@ interceptor：
 		}
 
 
-####我是链接
+#### 我是链接
 [demo-project链接](https://github.com/ninuxGithub/demo-project)<br />
 
 
 
-####我是效果图片
+#### 我是效果图片
 	Demo Picture
 ![image](https://github.com/ninuxGithub/demo-project/blob/master/demo.png)
 
