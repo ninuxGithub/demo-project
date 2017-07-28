@@ -70,8 +70,8 @@ interceptor：
 
 
 
-#### 我是效果图片
-	Demo Picture
+#### 我是效果图片Demo Picture
+	
 ![image](https://github.com/ninuxGithub/demo-project/blob/master/demo.png)
 
 
