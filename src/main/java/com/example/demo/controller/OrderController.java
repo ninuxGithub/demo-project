@@ -53,7 +53,7 @@ public class OrderController {
 		model.addAttribute("orders", orderList);
 		contextPath = request.getServletContext().getContextPath();
 		model.addAttribute("basePath", contextPath);
-		log.info("==>contextPath is {}", contextPath);
+		//log.info("==>contextPath is {}", contextPath);
 		return "orders";
 	}
 
