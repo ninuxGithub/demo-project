@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.mina;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.mina.core.session.IoSession;

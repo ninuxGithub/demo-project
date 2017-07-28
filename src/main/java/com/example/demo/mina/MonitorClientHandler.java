@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.mina;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;

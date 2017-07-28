@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo.mina;
 
 import java.net.URLDecoder;
 import java.text.MessageFormat;
