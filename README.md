@@ -71,7 +71,7 @@ interceptor：
 
 #### mina教程
 [系列教程:](http://www.cnblogs.com/wucao/tag/MINA/)<br/>
-[深入了解：](//shiyanjun.cn/archives/category/opensource/mina)
+[深入了解：](http://shiyanjun.cn/archives/category/opensource/mina)
 
 
 
