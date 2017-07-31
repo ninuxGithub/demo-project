@@ -197,7 +197,12 @@
             <artifactId>druid</artifactId>  
             <version>1.0.18</version>  
     	</dependency>  
-
+    	
+    	<!-- http -->
+    	<dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
