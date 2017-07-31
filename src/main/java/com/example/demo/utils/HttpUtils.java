@@ -184,11 +184,17 @@ public class HttpUtils {
 	
 	public static void main(String[] args) {
 		// demo:代理访问
-		String url = "http://api.adf.ly/api.php";
-		String para = "key=youkeyid&youuid=uid&advert_type=int&domain=adf.ly&url=http://somewebsite.com";
-
-		String sr = sendHttpPostRequest(url, para);
-		System.out.println(sr);
+//		String url = "http://api.adf.ly/api.php";
+//		String para = "key=youkeyid&youuid=uid&advert_type=int&domain=adf.ly&url=http://somewebsite.com";
+//
+//		String sr = sendHttpPostRequest(url, para);
+//		System.out.println(sr);
+		
+		//url = http://localhost:8080/?name=minaHttp
+		
+		String url="http://localhost:8080/?name=minaHttp";
+		String sendHttpGetRequest = sendHttpGetRequest(url);
+		System.out.println(sendHttpGetRequest);
 	}
 
 }

@@ -48,7 +48,6 @@ public class ServerHandler extends IoHandlerAdapter {
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		//http://localhost:8080/?name=minaHttp
 		
-		
 		/**
 		 * acceptor.getFilterChain().addLast("codec",
 				new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"), "\r\n", "\r\n")));
