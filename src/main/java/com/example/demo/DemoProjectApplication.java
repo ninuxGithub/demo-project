@@ -12,6 +12,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.example.demo.servlet.MyListener;
 import com.example.demo.servlet.SpringFilter;
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
+@EnableTransactionManagement
 @SpringBootApplication
 @ServletComponentScan(basePackages="com.example.demo.servlet")
 public class DemoProjectApplication {
