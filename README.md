@@ -19,6 +19,7 @@ demo-project
 	需要在application.java 类中加入@ServletComponentScan(basePackages="com.example.demo.servlet")   
 	扫描到工程中的Servlet
 	9.加入mina http 访问以及回调， 访问地址：http://localhost:8080/?name=minaHttp
+	10.加入httpUtils模拟发送各种http请求
 
 
 servlet:     
