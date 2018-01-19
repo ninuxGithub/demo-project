@@ -41,13 +41,20 @@ public class FreeMarkerController {
 		// 告诉浏览器用什么软件可以打开此文件
 		response.setHeader("content-Type", "application/msword");
 		// 下载文件的默认名称
-		response.setHeader("Content-Disposition", "attachment;filename=xx.doc");
+		response.setHeader("Content-Disposition", "attachment;filename="+ new String("产品列表.doc".getBytes(), "ISO8859-1"));
 		
-		freeMarkerConfigurer.getConfiguration().setClassForTemplateLoading(getClass(), "/");
-		Template template = freeMarkerConfigurer.getConfiguration().getTemplate("templates/order.ftl");
+		Template template = null;
+		String path = null;
+		try {
+			freeMarkerConfigurer.getConfiguration().setClassForTemplateLoading(getClass(), "/");
+			template = freeMarkerConfigurer.getConfiguration().getTemplate("templates/order.ftl");
 
-		String path = ClassUtils.getDefaultClassLoader().getResource("static/").getPath();
+			path = ClassUtils.getDefaultClassLoader().getResource("static/").getPath();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		log.info("图片的路径为：{}", path);
+		String headPortrait = null;
 		
 		List<Order> list = orderRepository.findAll();
 		for (int i = 0; i < list.size(); i++) {
@@ -60,12 +67,13 @@ public class FreeMarkerController {
 			byte[] imgData = new byte[fis.available()];
 			fis.read(imgData);
 			fis.close();
-			String headPortrait = b64Encoder.encodeAsString(imgData);
-			order.setHeadPortrait(headPortrait);
+			headPortrait = b64Encoder.encodeAsString(imgData);
+			//order.setHeadPortrait(headPortrait);
 			//log.info("图片的字节码：{}", headPortrait);
 		}
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("orders", list);
+		dataMap.put("headPortrait", headPortrait);
 		template.process(dataMap, new OutputStreamWriter(response.getOutputStream()));
 	}
 
