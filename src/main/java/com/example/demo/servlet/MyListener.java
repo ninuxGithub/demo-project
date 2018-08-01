@@ -1,4 +1,4 @@
-package com.example.demo.servlet;
+/*package com.example.demo.servlet;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestEvent;
@@ -25,3 +25,4 @@ public class MyListener implements ServletRequestListener{
 	}
 
 }
+*/

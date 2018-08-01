@@ -33,7 +33,7 @@
   </bean>
 
   <!-- The IoHandler implementation -->
-  <bean id="helloServerHandler" class="net.aimeizi.mina.examples.handler.HelloServerHandler" />
+  <bean id="helloServerHandler" class="com.example.mina.examples.handler.HelloServerHandler" />
 
   <!-- the IoFilters -->
 

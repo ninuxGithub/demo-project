@@ -47,7 +47,6 @@ public class RedisConfig {
 					log.info("==>JedisConnectionFactory bean init and Connect Redis Success...");  
 				}
 			}else{
-				
 				log.info("==>connectionFactory is null ...");  
 			}
 			template = new StringRedisTemplate(getConnectionFactory());

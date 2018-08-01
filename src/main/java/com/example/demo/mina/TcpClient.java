@@ -18,8 +18,6 @@ public class TcpClient {
 
 			// 请求服务器
 			String lines = "床前明月光";
-//			String lines = "床前明月光\n疑是地上霜\n举头望明月\n低头思故乡\n";
-//			String lines = "床前明月光\r\n疑是地上霜\r\n举头望明月\r\n低头思故乡\r\n";
 			byte[] outputBytes = lines.getBytes("UTF-8");
 			out.write(outputBytes);
 			out.flush();
@@ -29,19 +27,18 @@ public class TcpClient {
 			out.close();
 			socket.close();
 		}
-		
-		DataOutputStream out2 = null;
 
+		DataOutputStream out2 = null;
 		try {
 
-//			socket = new Socket("127.0.0.1", 3003);
+			socket = new Socket("127.0.0.1", 3003);
 			out2 = new DataOutputStream(socket.getOutputStream());
 
 			// 请求服务器
 			String data1 = "牛顿";
 			byte[] outputBytes1 = data1.getBytes("UTF-8");
 			out2.writeInt(outputBytes1.length); // write header
-			out.write(outputBytes1); // write body
+			out2.write(outputBytes1); // write body
 
 			String data2 = "爱因斯坦";
 			byte[] outputBytes2 = data2.getBytes("UTF-8");

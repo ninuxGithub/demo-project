@@ -18,7 +18,7 @@ import com.alibaba.druid.support.http.WebStatFilter;
 
 /**
  * 配置druid数据源
- *
+ * http://localhost:8888/druid/index.html
  */
 @Configuration
 public class DruidConfiguration {

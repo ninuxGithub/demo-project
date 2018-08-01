@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -8,16 +9,14 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-
+//import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * 启动浪费时间---注释掉
-* @ClassName: com.example.demo.config.Swagger2Config 
-* @Description: TODO(--)
-* @date 2017年7月27日 上午11:26:35
+ * 
+ * http://localhost:8888/swagger-ui.html
  */
-//@Configuration
-//@EnableSwagger2
+/*@Configuration
+@EnableSwagger2*/
 public class Swagger2Config {
 
 	/**

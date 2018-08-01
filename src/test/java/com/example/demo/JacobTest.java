@@ -5,6 +5,7 @@ import com.jacob.com.Dispatch;
 import com.jacob.com.Variant;
 import com.jacob.com.ComThread;
 
+@SuppressWarnings("unused")
 public class JacobTest {
 	// word文档
 	private Dispatch doc = null;
@@ -25,7 +26,6 @@ public class JacobTest {
 	/**
 	 * 所有表格
 	 */
-	@SuppressWarnings("unused")
 	private Dispatch tables;
 	/**
 	 * 当前表格
@@ -318,6 +318,7 @@ public class JacobTest {
 	 * 
 	 * @param Dispatch
 	 */
+	@SuppressWarnings("deprecation")
 	public int getTablesCount(Dispatch tables) throws Exception {
 		int count = 0;
 		try {
@@ -552,6 +553,7 @@ public class JacobTest {
 		return Dispatch.get(doc, "Shapes").toDispatch();
 	}
 
+	@SuppressWarnings("deprecation")
 	public int getShapesCount() throws Exception {
 		int count = 0;
 		count = Dispatch.get(shapes, "Count").toInt();
@@ -888,6 +890,7 @@ public class JacobTest {
 	 *            要查找的文本
 	 * @return boolean true-查找到并选中该文本，false-未查找到文本
 	 */
+	@SuppressWarnings("static-access")
 	public boolean find(String toFindText) {
 		if (toFindText == null || toFindText.equals(""))
 			return false;
@@ -1059,6 +1062,7 @@ public class JacobTest {
 	 * 
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	public int getColumnsCount() {
 		this.getColumns();
 		return Dispatch.get(columns, "Count").toInt();
@@ -1360,12 +1364,14 @@ public class JacobTest {
 		return Dispatch.get(range, "Text").toString();
 	}
 
+	@SuppressWarnings("deprecation")
 	public int getParagraphsCount() throws Exception {
 		int count = 0;
 		count = Dispatch.get(paragraphs, "Count").toInt();
 		return count;
 	}
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		long time1 = System.currentTimeMillis();
 		int i = 0;

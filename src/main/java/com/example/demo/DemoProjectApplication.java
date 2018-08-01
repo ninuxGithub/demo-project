@@ -1,22 +1,9 @@
 package com.example.demo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.DispatcherType;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.example.demo.servlet.MyListener;
-import com.example.demo.servlet.SpringFilter;
-import com.example.demo.servlet.SpringServlet;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DemoProjectApplication {
 
 	public static void main(String[] args) {
+		log.info("启动springboot项目");
 		SpringApplication.run(DemoProjectApplication.class, args);
 	}
 
@@ -35,7 +23,7 @@ public class DemoProjectApplication {
 	 * 注册Spring Servlet Bean 指定访问的 url :/spring/servlet
 	 * @return
 	 */
-	@Bean
+	/*@Bean
 	public ServletRegistrationBean servletRegistrationBean() {
 		ServletRegistrationBean bean = new ServletRegistrationBean();
 		bean.setServlet(new SpringServlet());
@@ -43,9 +31,9 @@ public class DemoProjectApplication {
 		bean.addUrlMappings("/spring/servlet");
 		bean.setOrder(0);
 		return bean;
-	}
+	}*/
 	
-	@Bean
+	/*@Bean
 	public FilterRegistrationBean filterRegistrationBean(){
 		FilterRegistrationBean bean = new FilterRegistrationBean();
 		bean.setFilter(new SpringFilter());
@@ -56,12 +44,12 @@ public class DemoProjectApplication {
 		log.info("springFilter run....");
 		bean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.FORWARD);
 		return bean;
-	}
+	}*/
 	
-	@Bean
+	/*@Bean
 	public ServletListenerRegistrationBean<MyListener> listenerRegistrationBean(){
 		ServletListenerRegistrationBean<MyListener> bean = new ServletListenerRegistrationBean<>();
 		bean.setListener(new MyListener());
 		return bean;
-	}
+	}*/
 }

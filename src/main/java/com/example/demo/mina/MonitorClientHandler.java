@@ -6,10 +6,6 @@ import org.apache.mina.core.session.IoSession;
 
 public class MonitorClientHandler extends IoHandlerAdapter {
 
-	int count = 0;
-	StringBuilder sb = new StringBuilder();
-	int pos = 0;
-	// @Autowired BaseDao baseDao;
 
 	@Override
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {

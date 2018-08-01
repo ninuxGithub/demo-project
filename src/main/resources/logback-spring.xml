@@ -4,7 +4,7 @@
 	<jmxConfigurator />
 	<contextName>demo-log</contextName>
 	<!-- 日志文件存储路径 -->
-	<property name="LOG_HOME" value="${catalina.home}/logs" />
+	<property name="LOG_HOME" value="./logs" />
 	<!-- 控制台输出 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

@@ -1,4 +1,4 @@
-/*package com.example.mina.examples.spring;
+package com.example.mina.examples.spring;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -20,4 +20,3 @@ public class MinaSpringMain {
         return new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
     }
 }
-*/

@@ -12,7 +12,7 @@ import org.apache.mina.filter.codec.textline.TextLineEncoder;
 
 public class MyCodeFactory implements ProtocolCodecFactory {
 
-	private LineDelimiter enLineDelimiter = new LineDelimiter("\r\n");
+	//private LineDelimiter enLineDelimiter = new LineDelimiter("\r\n");
 
 	private final TextLineEncoder encoder;
 	private final TextLineDecoder decoder;
@@ -20,12 +20,12 @@ public class MyCodeFactory implements ProtocolCodecFactory {
 	// final static String endchar = Constant.CHAR2;
 
 	public MyCodeFactory() {
-		this(Charset.forName("gb2312"));
+		this(Charset.forName("utf-8"));
 	}
 
 	public MyCodeFactory(Charset charset) {
-		encoder = new TextLineEncoder(charset, enLineDelimiter);
-		decoder = new TextLineDecoder(charset, enLineDelimiter);
+		encoder = new TextLineEncoder(charset, LineDelimiter.UNIX);
+        decoder = new TextLineDecoder(charset, LineDelimiter.AUTO);
 
 	}
 
