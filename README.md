@@ -20,6 +20,20 @@ demo-project
 	扫描到工程中的Servlet
 	9.加入mina http 访问以及回调， 访问地址：http://localhost:8080/?name=minaHttp
 	10.加入httpUtils模拟发送各种http请求
+#### MinaConfig
+ spring-boot整合mina的配置； 处理httpRequest请求（不是content）; mina 的心跳部分不是很清楚需要进一步的研究
+  访问地址：http://localhost:3003/?name=minaHttp
+
+#### redisConfig
+ spring-boot整合redis
+
+#### Swagger2Config
+ spring-boot整合Swagger2Config; 访问地址：http://localhost:8888/swagger-ui.html
+ 
+#### DruidConfiguration
+ spring-boot整合druid数据源; 访问地址：http://localhost:8888/druid/index.html
+ 
+
 
 
 servlet:     
