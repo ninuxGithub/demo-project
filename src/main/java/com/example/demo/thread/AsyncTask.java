@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 import java.util.concurrent.Future;
 
-/**
- * Created by daile on 2017/7/4.
- */
+
 @Component
 public class AsyncTask {
 

@@ -25,6 +25,8 @@ public class WebLogAspect {
     @Pointcut("execution(public * com.example.demo.controller.RedisExampleController.*(..))")
     public void webLog() {
     }
+    
+    
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) {
