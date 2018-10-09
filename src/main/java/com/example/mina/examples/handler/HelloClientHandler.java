@@ -33,6 +33,7 @@ public class HelloClientHandler implements IoHandler {
 		if(message!=null){//接受服务端返回的消息
 			Date date = new Date();
 			String printmsg = "";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			if(message instanceof Message){
 				Message msg = (Message) message;
 				int command = msg.getCommand();
@@ -45,9 +46,9 @@ public class HelloClientHandler implements IoHandler {
 					System.out.println("服务器已抽风....");
 					break;
 				}
-				printmsg = "服务端应答:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) +" "+msg.getMsgContent();
+				printmsg = "服务端应答:" + simpleDateFormat.format(date) +" "+msg.getMsgContent();
 			}else{
-				printmsg = "服务端应答:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date) +" "+message.toString();
+				printmsg = "服务端应答:" + simpleDateFormat.format(date) +" "+message.toString();
 			}
 			System.out.println(printmsg);
 		}

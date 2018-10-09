@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chart</title>
+</head>
+<body>
+<div id="container" style="min-width:400px;height:600px"></div>
+
+</body>
+
+<!-- <script type="text/javascript" src="http://foft.gildata.com/fastMC/js/system/dataTool.min.js"></script> -->
+<!-- <script type="text/javascript" src="http://foft.gildata.com/fastMC/js/system/echarts-all-3.js"></script> -->
+<!-- <script type="text/javascript" src="http://foft.gildata.com/fastMC/js/system/moment-with-locales.min.js"></script> -->
+<script type="text/javascript" src="http://foft.gildata.com/fastMC/js/system/echarts.min.js"></script>
+
+<script type="text/javascript">
+    //参考api
+    //http://echarts.baidu.com/option.html#xAxis.axisTick.length
+    //https://blog.csdn.net/haijun1993/article/details/80005785
+    var data = [
+        {
+            "date": "2017-10-10",
+            "pointValue": 8.5678,
+            "compareValue": 6.7885
+        },
+        {
+            "date": "2017-10-11",
+            "pointValue": 1.3425,
+            "compareValue": 1.3423
+        },
+        {
+            "date": "2017-10-12",
+            "pointValue": -2.32146,
+            "compareValue": -1.2346
+        },
+        {
+            "date": "2017-10-13",
+            "pointValue": -1.3425,
+            "compareValue": -8.3234
+        },
+        {
+            "date": "2017-10-16",
+            "pointValue": 2.6332,
+            "compareValue": -1.0080
+        },
+        {
+            "date": "2017-10-17",
+            "pointValue": 1.0034,
+            "compareValue": 1.0079
+        },
+        {
+            "date": "2017-10-18",
+            "pointValue": 4.2342,
+            "compareValue": 5.01595
+        }
+
+    ];
+    var exportColor = '#8C8C8C';
+    var gridColor = '#e3e3e3';
+    var bgColor = '#333';//深灰（偏黑）
+    var pointColor = '#2864c8';
+    var compareColor = '#e22e36';
+    var pointTitle = '回测对象';
+    var compareTitle = '沪深300';
+
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    myChart.hideLoading();
+    myChart.setOption(draw2Line(data), true);
+
+    function draw2Line(data) {
+        return {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    animation: false
+                },
+                formatter: function (params) {
+                    for (var i = 0; i < params.length - 1; i++) {
+                        for (var j = 0; j < params.length - 1 - i; j++) {
+                            if (params[j].value < params[j + 1].value) {
+                                var temp = params[j];
+                                params[j] = params[j + 1];
+                                params[j + 1] = temp;
+                            }
+                        }
+                    }
+                    var result = params[0].name;
+                    params.forEach(function (item) {
+                        if (typeof(item.value) == "undefined") {
+                            result += '<br/><span style=color:' + item.color + '>●</span>' + item.seriesName;
+                        } else {
+                            result += '<br/><span style=color:' + item.color + '>●</span>' + item.seriesName + ' : ' + item.value.toFixed(2) + "%";
+                        }
+                    });
+                    return result;
+                }
+            },
+            legend: {
+                show: true,
+                bottom: true,
+                itemGap:200,
+                align: 'left',
+                itemHeight: 12,
+                data: [
+                    {name: pointTitle, icon: 'circle'},
+                    {name: compareTitle, icon: 'circle'}
+                ],
+                textStyle: {
+                    color: exportColor,
+                    fontSize: 14,
+                    fontWeight: 'bold',
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '5%',
+                containLabel: true
+            },
+            calculable: true,
+            animation: false,
+            xAxis: {
+                type: 'category',
+                data: data.map(function (item) {
+                    return item.date;
+                }),
+                axisLabel: {
+                    formatter: function (value, idx) {
+                        var date = new Date(value);
+                        if(idx >0 && idx < data.length-1){
+                            return "";
+                        }
+                        //var value = idx === 0 ? value : [date.getYear() + 1900, date.getMonth() + 1, date.getDate()].join('-');
+                        return value;
+                    },
+                    show: true,
+                    textStyle: {
+                        color: exportColor
+                    },
+                },
+                axisTick:{
+                    show:false
+                },
+                axisLine: {
+                    show:false,
+                    onZero: true,
+                    lineStyle: {
+                        color: bgColor,
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        // 使用深浅的间隔色
+                        color: [bgColor, bgColor]
+                    },
+                    show: false//不显示横轴的网格
+                },
+                boundaryGap: false,
+                //offset:10,
+                //nameGap:200
+            },
+            yAxis: {
+                axisLabel: {
+                    formatter: function (val) {
+                        return (val.toFixed(2)) + "%";
+                    },
+                    show: true,
+                    textStyle: {
+                        color: exportColor
+                    },
+                },
+                axisTick:{
+                    show:false
+                },
+                axisLine: {
+                    show: false,
+                    lineStyle: {
+                        color: bgColor,
+                    }
+                },
+                scale: true,
+                splitLine: {
+                    lineStyle: {
+                        // 使用深浅的间隔色
+                        color: [gridColor, gridColor],
+                        type:'dotted'
+                    },
+                    show: true
+                }
+            },
+            series: [{
+                type: 'line',
+                name: pointTitle,
+                data: data.map(function (item) {
+                    return item.pointValue;
+                }),
+                hoverAnimation: false,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        color: pointColor
+                    }
+                },
+                showSymbol: false
+            },
+                {
+                    type: 'line',
+                    name: compareTitle,
+                    data: data.map(function (item) {
+                        return item.compareValue;
+                    }),
+                    hoverAnimation: false,
+                    symbolSize: 6,
+                    itemStyle: {
+                        normal: {
+                            color: compareColor
+                        }
+                    },
+                    showSymbol: false
+                }]
+        };
+
+    }
+
+</script>
+</html>
