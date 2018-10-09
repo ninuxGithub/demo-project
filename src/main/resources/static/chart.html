@@ -57,12 +57,12 @@
 
     ];
     var exportColor = '#8C8C8C';
-    var gridColor = '#e3e3e3';
+    var gridColor = '#e3e3e3';//网格的背景颜色
     var bgColor = '#333';//深灰（偏黑）
-    var pointColor = '#2864c8';
-    var compareColor = '#e22e36';
-    var pointTitle = '回测对象';
-    var compareTitle = '沪深300';
+    var pointColor = '#2864c8';//目标对的circle的颜色
+    var compareColor = '#e22e36';//对比对象的circle的颜色
+    var pointTitle = '回测对象';//目标的标题
+    var compareTitle = '沪深300';//对比对象的标题
 
     var dom = document.getElementById("container");
     var myChart = echarts.init(dom);
@@ -147,7 +147,7 @@
                     show:false,
                     onZero: true,
                     lineStyle: {
-                        color: bgColor,
+                        color: exportColor,
                     }
                 },
                 splitLine: {
